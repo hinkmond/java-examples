@@ -8,7 +8,7 @@
  *
  * @author hiwong
  */
-public class JavaPuzzlis {
+public class JavaPuzzlis01 {
 
     private static class Elementary {
 
@@ -27,11 +27,11 @@ public class JavaPuzzlis {
     }
 
 
-    // JavaPuzzlis Main
+    // JavaPuzzlis01 Main
     public static void main(String[] args) {
 
-       Elementary.doIt(null);
-//       Multicast.doIt(null);
+//       Elementary.doIt(null);
+       Multicast.doIt(null);
 
     }
 

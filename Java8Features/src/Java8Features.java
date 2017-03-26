@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class Main {
+public class Java8Features {
 
     static List<Integer> myList =
         new ArrayList<>(Arrays.asList( 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ));
