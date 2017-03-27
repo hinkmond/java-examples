@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-
 public class Java8Features {
 
     static List<Integer> myList =

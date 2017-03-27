@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author hiwong
+ * Created by hinkmond on 3/1/2017.
  */
 public class JavaPuzzlis01 {
 
@@ -18,23 +11,9 @@ public class JavaPuzzlis01 {
 
     }
 
-    private static class Multicast {
-
-        private static void doIt(String[] args) {
-            System.out.println((int) (char) (byte) -1);
-        }
-
-    }
-
-
     // JavaPuzzlis01 Main
     public static void main(String[] args) {
-
-//       Elementary.doIt(null);
-       Multicast.doIt(null);
-
+        Elementary.doIt(null);
     }
-
-
 
 }
