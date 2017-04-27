@@ -3,17 +3,11 @@
  */
 public class JavaPuzzlis02 {
 
-  private static class Multicast {
-
-    private static void doIt(String[] args) {
-      System.out.println((int) (char) (byte) -1);
-    }
-
-  }
-
   // JavaPuzzlis02 Main
   public static void main(String[] args) {
-    Multicast.doIt(null);
+
+    System.out.println((int) (char) (byte) -1);
+
   }
 
 }
