@@ -20,8 +20,7 @@ public class JavaAdvDataStreams01 {
             .map(s -> s.replace("e", "3"))
             .map(s -> s.replace("o", "0"))
             .map(s -> s.replace("i", "1"))
-            .reduce("Reduction String", (a, s) -> a + ", " +
-                    s.toUpperCase());
+            .collect(Collectors.joining(", "));
 
     // List all newly mapped elements
     System.out.println(newString);
