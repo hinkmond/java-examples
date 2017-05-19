@@ -9,21 +9,34 @@ import java.util.stream.Stream;
 public class JavaAdvDataStreams01 {
   public static void main(String[] args) {
     String[] myArray = new String[] {
-        "Fred", "Debbie", "Amy", "Jane", "Theodore", "Leonard", "Ralph", "Justine"
+        "Fred", "Debbie", "Amy", "Jane", "Theodore",
+        "Leonard", "Ralph", "Justine"
     };
+
+    List<String> femaleNamesList = Arrays.asList(
+        "Debbie", "Amy", "Jane", "Justine"
+    );
+
 
     // Create some sample Streams all from the same array
     Stream<String> mapStream = Arrays.stream(myArray);
 
     // Example of multiple maps
     String newString = mapStream
-            .filter(s -> s.contains("Amy"))
-            .reduce("", (a, s) -> a + s + ", ");
+            .filter(femaleNamesList::contains)
+            .reduce("", (a, s) -> {
+              if (!a.isEmpty()) {
+                return a + ", " + s;
+              } else {
+                return a + s;
+              }
+            });
 
     // List all newly mapped elements
     System.out.println(newString);
 
     // Show result of convenient map count()
-    System.out.println("Number of Elements Using count() = ");
+    System.out.println("Number of Elements Using split() and length = " +
+        newString.split(", ").length);
   }
 }
