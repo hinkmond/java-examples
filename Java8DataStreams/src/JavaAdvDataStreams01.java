@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class JavaAdvDataStreams01 {
   public static void main(String[] args) {
     String[] myArray = new String[] {
-        "Fred", "Debbie", "Theodore", "Lenny", "Justine"
+        "Fred", "Debbie", "Amy", "Jane", "Theodore", "Leonard", "Ralph", "Justine"
     };
 
     // Create some sample Streams all from the same array
@@ -17,10 +17,8 @@ public class JavaAdvDataStreams01 {
 
     // Example of multiple maps
     String newString = mapStream
-            .map(s -> s.replace("e", "3"))
-            .map(s -> s.replace("o", "0"))
-            .map(s -> s.replace("i", "1"))
-            .collect(Collectors.joining(", "));
+            .filter(s -> s.contains("Amy"))
+            .reduce("", (a, s) -> a + s + ", ");
 
     // List all newly mapped elements
     System.out.println(newString);
