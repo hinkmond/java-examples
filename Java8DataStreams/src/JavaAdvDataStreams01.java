@@ -1,42 +1,45 @@
-import javax.swing.text.html.Option;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
 public class JavaAdvDataStreams01 {
-  public static void main(String[] args) {
-    String[] myArray = new String[] {
-        "Fred", "Debbie", "Amy", "Jane", "Theodore",
-        "Leonard", "Ralph", "Justine"
-    };
 
-    List<String> femaleNamesList = Arrays.asList(
-        "Debbie", "Amy", "Jane", "Justine"
+  public static void main(String[] args) {
+
+    final List<String> femaleNamesList = Arrays.asList(
+        "Amy", "Debbie", "Jane", "Justine"
     );
 
+    String[] myArray = new String[] {
+        "FRED", "debbie", "AMY", "JanE", "Theodore",
+        "Leonard", "Ralph", "JustiNE", "Samuel",
+        "George", "Albert"
+    };
 
-    // Create some sample Streams all from the same array
+    // Create a sample Data Stream a String array
     Stream<String> mapStream = Arrays.stream(myArray);
 
-    // Example of multiple maps
+    // Example of map, filter, then reduce
     String newString = mapStream
-            .filter(femaleNamesList::contains)
-            .reduce("", (a, s) -> {
-              if (!a.isEmpty()) {
-                return a + ", " + s;
-              } else {
-                return a + s;
-              }
-            });
+        .map(s -> {String lowerCaseStr = s.toLowerCase();
+        return Character.toUpperCase(lowerCaseStr.charAt(0)) +
+            lowerCaseStr.substring(1);})
+        .filter(femaleNamesList::contains)
+        .reduce("Search results:", (accumulator, mapValue) -> {
+          if (accumulator.endsWith(":")) {
+            return accumulator + " " + mapValue;
+          } else {
+            return accumulator + ", " + mapValue;
+          }
+        });
 
     // List all newly mapped elements
     System.out.println(newString);
 
     // Show result of convenient map count()
-    System.out.println("Number of Elements Using split() and length = " +
+    System.out.println("Number of female names found = " +
         newString.split(", ").length);
+
   }
 }
