@@ -22,16 +22,16 @@ public class JavaAdvDataStreams03 {
         "Theodore",  "Leonard", "Ralph", "JustiNE"
     };
     String[] myArray03 = new String[] {
-        "Samuel", "George", "Albert", "Ann", "Becky"
+        "Samuel", "George", "Albert", "ANn", "BeCKy"
     };
 
-    // Create a sample map
+    // Create a sample Map with multiple Sets in each Entry
     HashSet<String[]> namesMap = new HashSet<>();
     namesMap.add(myArray01);
     namesMap.add(myArray02);
     namesMap.add(myArray03);
 
-    // Example of map, filter, then reduce
+    // Example of map, filter, then collect
     List<String> foundNamesList = namesMap.stream()
         .flatMap(s -> Arrays.stream(s).map(strElem -> {
           String lowerCaseStr = strElem.toLowerCase();
@@ -40,10 +40,10 @@ public class JavaAdvDataStreams03 {
         .filter(femaleNamesList::contains)
         .collect(Collectors.toList());
 
-    // List all newly mapped elements
+    // List all newly processed elements
     foundNamesList.forEach(System.out::println);
 
-    // Show result of convenient map count()
+    // Show result of count
     System.out.println("Number of female names found = " +
         foundNamesList.size());
 
