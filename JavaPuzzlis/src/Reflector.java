@@ -4,7 +4,7 @@ import java.lang.reflect.*;
 
 public class Reflector {
     public static void main(String[] args) throws Exception {
-        Set<String> s = new HashSet<String>();
+        Set<java.lang.String> s = new HashSet<>();
         s.add("foo");
         Iterator it = s.iterator();
         Method m = it.getClass().getMethod("hasNext");
