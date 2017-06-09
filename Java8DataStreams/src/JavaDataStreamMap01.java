@@ -13,20 +13,22 @@ public class JavaDataStreamMap01 {
             "Engineer", "Sysadmin", "Programmer"
     );
 
-    Map<Integer, List<String>> memberMap = new HashMap<>();
-    memberMap.put(1, Arrays.asList("Clerk", "Cashier", "Salesperson"));
-    memberMap.put(2, Arrays.asList("Stocker", "Salesperson"));
-    memberMap.put(3, Arrays.asList("Engineer", "Manager"));
+    Map<Integer, List<String>> memberWorkHistoryMap = new HashMap<>();
+    memberWorkHistoryMap.put(1, Arrays.asList("Clerk", "Cashier", "Salesperson"));
+    memberWorkHistoryMap.put(2, Arrays.asList("Stocker", "Salesperson"));
+    memberWorkHistoryMap.put(3, Arrays.asList("Engineer", "Manager"));
 
     // Create a sample Data Stream a String array
-    Stream<String> mapStream = memberMap.get(1).stream();
+    Stream<String> mapStream = memberWorkHistoryMap.get(1).stream();
 
     // Example of map, filter, then reduce
     String newString = mapStream
-        .map(s -> {String lowerCaseStr = s.toLowerCase();
-        return Character.toUpperCase(lowerCaseStr.charAt(0)) +
-            lowerCaseStr.substring(1);})
-        .filter(jobPositionList::contains)
+        .map(s -> {
+          String lowerCaseStr = s.toLowerCase();
+          return Character.toUpperCase(lowerCaseStr.charAt(0)) +
+            lowerCaseStr.substring(1);
+        })
+        .filter(s -> jobPositionList.contains(s))
         .reduce("Results:", (accumulator, mapValue) -> {
           if (accumulator.endsWith(":")) {
             return accumulator + " " + mapValue;

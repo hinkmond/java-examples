@@ -6,6 +6,7 @@ public class JavaOptional {
   public static void optional_map_substring_test() {
     Optional<String> number = Optional.of("longword");
     Optional<String> noNumber = Optional.empty();
+    noNumber = Optional.of("test");
 
     Optional<String> smallerWord = number.map(s -> s.substring(0,4));
     Optional<String> nothing = noNumber.map(s -> s.substring(0,4));
@@ -13,11 +14,8 @@ public class JavaOptional {
     if (smallerWord.get().equals("long")) {
       System.out.println("Optional.of() has the correct string.");
     }
-    if (nothing.isPresent() == false) {
-      System.out.println("Optional.empty() is empty.");
-    } else {
-      System.out.println("nothing.get() = " + nothing.get());
-    }
+
+    System.out.println("Optional.orElse() = " + nothing.orElse("UNKNOWN"));
   }
 
   public static void main(String args[]) {
