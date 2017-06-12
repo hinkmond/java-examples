@@ -7,7 +7,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-
+/*
+ * Examples of Java Data Streams flatMap
+ * 
+ * { {1,2}, {3,4}, {5,6} } -> flatMap -> {1,2,3,4,5,6}
+ *
+ * { {'a','b'}, {'c','d'}, {'e','f'} } -> flatMap -> {'a','b','c','d','e','f'}
+ */
 public class JavaDataStreamMap02 {
 
   public static void main(String[] args) {
