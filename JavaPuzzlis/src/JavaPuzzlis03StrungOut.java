@@ -1,4 +1,4 @@
-public class StrungOut {
+public class JavaPuzzlis03StrungOut {
     public static void main(String[] args) {
         String s = new String("Hello world");
         System.out.println(s);

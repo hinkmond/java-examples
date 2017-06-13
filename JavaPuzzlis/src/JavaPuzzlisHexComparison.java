@@ -4,7 +4,7 @@
 import java.lang.String;
 
 
-public class JavaPuzzlis03 {
+public class JavaPuzzlisHexComparison {
   private static class Casting {
 
     private static void doIt(String[] args) {

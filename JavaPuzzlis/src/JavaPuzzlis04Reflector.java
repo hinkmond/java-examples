@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.reflect.*;
 import java.lang.String;
 
-public class Reflector {
+public class JavaPuzzlis04Reflector {
     public static void main(String[] args) throws Exception {
         Set<java.lang.String> s = new HashSet<>();
         s.add("foo");
