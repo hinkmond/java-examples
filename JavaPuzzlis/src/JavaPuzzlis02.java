@@ -1,6 +1,9 @@
 /**
  * Created by hinkmond on 3/1/2017.
  */
+import java.lang.String;
+
+
 public class JavaPuzzlis02 {
 
   // JavaPuzzlis02 Main

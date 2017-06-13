@@ -1,6 +1,9 @@
 /**
  * Created by hinkmond on 4/27/2017.
  */
+import java.lang.String;
+
+
 public class JavaPuzzlis03 {
   private static class Casting {
 

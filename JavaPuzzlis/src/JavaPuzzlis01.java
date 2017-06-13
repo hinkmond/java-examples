@@ -1,6 +1,8 @@
 /**
  * Created by hinkmond on 3/1/2017.
  */
+import java.lang.String;
+
 public class JavaPuzzlis01 {
 
   // JavaPuzzlis01 Main
