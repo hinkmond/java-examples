@@ -9,7 +9,7 @@ import java.util.Set;
 
 /*
  * Examples of Java Data Streams flatMap
- * 
+ *
  * { {1,2}, {3,4}, {5,6} } -> flatMap -> {1,2,3,4,5,6}
  *
  * { {'a','b'}, {'c','d'}, {'e','f'} } -> flatMap -> {'a','b','c','d','e','f'}
@@ -24,7 +24,7 @@ public class JavaDataStreamMap02 {
 
     Set<List<String>> memberWorkHistorySet = new HashSet<>();
     memberWorkHistorySet.add(Arrays.asList("Clerk", "Cashier", "Salesperson"));
-    memberWorkHistorySet.add(Arrays.asList("Stocker", "Sysadmin"));
+    memberWorkHistorySet.add(Arrays.asList("Stocker","Sysadmin"));
     memberWorkHistorySet.add(Arrays.asList("Engineer", "Manager"));
 
     // Create a sample Data Stream a String array

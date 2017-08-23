@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +37,23 @@ public class JavaDataStreamMap01 {
             return accumulator + ", " + mapValue;
           }
         });
+
+    memberWorkHistoryMap.forEach((key, list) -> {
+      System.out.print("key = " + key + ": ");
+      for (String listString : list) {
+        System.out.println("item: " + listString);
+      }
+      Stream listStream = Stream.of(list);
+      listStream.map(value -> {
+        System.out.println("item from for-loops: " + value);
+        return value;
+      });
+      return;
+    });
+
+    for (List mapList : memberWorkHistoryMap.values()) {
+      mapList.forEach(string -> System.out.println("item from for/forEach: " + string));
+    }
 
     // List all newly mapped elements
     System.out.println(newString);
