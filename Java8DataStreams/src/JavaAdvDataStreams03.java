@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -20,20 +23,27 @@ public class JavaAdvDataStreams03 {
         "Samuel", "George", "Albert", "ANn", "BeCKy"
     };
 
-    // Create a sample Map with multiple Sets in each Entry
+    // Create a Map with variable length ArrayList of Strings in each Entry
     HashMap<Integer, List<String>> namesMap = new HashMap<>();
     namesMap.put(1, new ArrayList<>(Arrays.asList(myArray01)));
     namesMap.put(2, new ArrayList<>(Arrays.asList(myArray02)));
     namesMap.put(3, new ArrayList<>(Arrays.asList(myArray03)));
 
-    // Example of map, filter, then collect
+    // Example of map flattening, map, filter, then collect
     List<String> foundNamesList = namesMap.values().stream()
-        .flatMap(mapValuesStream -> mapValuesStream.stream().map(strElem -> {
-          String lowerCaseStr = strElem.toLowerCase();
-          return Character.toUpperCase(lowerCaseStr.charAt(0)) +
-              lowerCaseStr.substring(1);}))
-        .filter(femaleNamesList::contains)
-        .collect(Collectors.toList());
+            // Flatten the multiple entries the given Map into one stream
+            .flatMap(mapValues -> mapValues.stream()
+                    // Apply map function to all the flattened Entries in stream
+                    .map(strElem -> {
+                      String lowerCaseStr = strElem.toLowerCase();
+                      // Normalize String to capitalize only first letter
+                      return Character.toUpperCase(lowerCaseStr.charAt(0)) +
+                              lowerCaseStr.substring(1);
+                    }))
+            // Filter processed map down to only female names
+            .filter(femaleNamesList::contains)
+            // Collapse filtered map into a Java Collections List of Strings
+            .collect(Collectors.toList());
 
     // List all newly processed elements
     foundNamesList.forEach(System.out::println);
