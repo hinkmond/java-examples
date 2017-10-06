@@ -19,10 +19,9 @@ public class JavaEnumToBits {
     BigInteger testInteger = BigInteger.valueOf(testBits);
 
     testInteger = testInteger.setBit(orderedEnum.ONE.ordinal());
-    testInteger = testInteger.setBit(orderedEnum.FIVE.ordinal());
-    testInteger = testInteger.setBit(orderedEnum.TWO.ordinal());
+    testInteger = testInteger.setBit(orderedEnum.THREE.ordinal());
+    testInteger = testInteger.setBit(orderedEnum.SEVEN.ordinal());
     testInteger = testInteger.setBit(orderedEnum.EIGHT.ordinal());
-
 
     System.out.println("JavaEnumToBits: testInteger = " + testInteger);
 
