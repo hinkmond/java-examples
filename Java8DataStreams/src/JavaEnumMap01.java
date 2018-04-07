@@ -10,7 +10,7 @@ public class JavaEnumMap01 {
     public static void main(String[] args) {
 
         String[] myArray01 = new String[] {
-                "Gimli", "Fili", "Kili", "Thorin"
+                "Gimli", "Fili", "Kili"
         };
         String[] myArray02 = new String[] {
                 "Arwen", "Elrond", "Gladriel", "Legolas"
@@ -19,7 +19,7 @@ public class JavaEnumMap01 {
                 "Frodo", "Bilbo", "Samwise", "Pippin", "Merry"
         };
         String[] myArray04 = new String[] {
-                "Aragorn", "Boromir", "Saruman", "Gandalf", "Eowyn"
+                "Aragorn", "Boromir"
         };
 
         // Create a Map of RACE with variable length ArrayList of Strings in each Entry
@@ -29,7 +29,17 @@ public class JavaEnumMap01 {
         namesMap.put(RACE.HOBBIT, new ArrayList<>(Arrays.asList(myArray03)));
         namesMap.put(RACE.HUMAN, new ArrayList<>(Arrays.asList(myArray04)));
 
-        // For each key/value pair in the Map print the RACE (key) and the List of names (value) of that RACE
-        namesMap.forEach((key, value) -> System.out.println(key + ": " + value));
+        int numCandidates[] = new int[RACE.values().length];
+
+        // DO NOT use enum .ordinal() this way!
+        System.out.println("Don't use enum .ordinal() this way for indexing");
+        for (RACE race : RACE.values()) {
+            numCandidates[race.ordinal()] = namesMap.get(race).size();
+            System.out.println("Number of " + race + " candidates: " + numCandidates[race.ordinal()]);
+        }
+
+        // Use the EnumMap (namesMap) instead
+        System.out.println("\nUse the EnumMap directory with .forEach() without explicit indexing");
+        namesMap.forEach((key, value) -> System.out.println("Number of " + key + " candidates: " + value.size()));
     }
 }
