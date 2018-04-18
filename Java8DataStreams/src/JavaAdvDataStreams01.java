@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -12,7 +13,7 @@ public class JavaAdvDataStreams01 {
     );
 
     String[] myArray = new String[] {
-        "FRED", "debbie", "AMY", "JanE", "Theodore",
+        "FRED", "debbie", "AMY", "JanE", null, null, null, "Theodore",
         "Leonard", "Ralph", "JustiNE", "Samuel",
         "George", "Albert"
     };
@@ -20,19 +21,31 @@ public class JavaAdvDataStreams01 {
     // Create a sample Data Stream a String array
     Stream<String> mapStream = Arrays.stream(myArray);
 
-    // Example of map, filter, then reduce
     String newString = mapStream
-        .map(s -> {String lowerCaseStr = s.toLowerCase();
-        return Character.toUpperCase(lowerCaseStr.charAt(0)) +
-            lowerCaseStr.substring(1);})
-        .filter(femaleNamesList::contains)
-        .reduce("Search results:", (accumulator, mapValue) -> {
-          if (accumulator.endsWith(":")) {
-            return accumulator + " " + mapValue;
-          } else {
-            return accumulator + ", " + mapValue;
-          }
-        });
+            .filter(e -> e != null)
+            .map(s -> {String lowerCaseStr = s.toLowerCase();
+              return Character.toUpperCase(lowerCaseStr.charAt(0)) +
+                      lowerCaseStr.substring(1);})
+            .collect(Collectors.toList()).toString();
+    System.out.println("newString = " + newString);
+
+    mapStream = Arrays.stream(myArray);
+    // Example of map, filter, then reduce
+    newString = mapStream
+            .filter(s -> s != null)
+            .map(s -> {
+              String lowerCaseStr = s.toLowerCase();
+              return Character.toUpperCase(lowerCaseStr.charAt(0)) +
+                      lowerCaseStr.substring(1);
+            })
+            .filter(femaleNamesList::contains)
+            .reduce("Search results:", (accumulator, mapValue) -> {
+              if (accumulator.endsWith(":")) {
+                return accumulator + " " + mapValue;
+              } else {
+                return accumulator + ", " + mapValue;
+              }
+            });
 
     // List all newly mapped elements
     System.out.println(newString);
