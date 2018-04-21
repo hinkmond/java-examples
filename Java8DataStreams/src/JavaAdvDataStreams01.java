@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,12 +22,13 @@ public class JavaAdvDataStreams01 {
     // Create a sample Data Stream a String array
     Stream<String> mapStream = Arrays.stream(myArray);
 
-    String newString = mapStream
-            .filter(e -> e != null)
-            .map(s -> {String lowerCaseStr = s.toLowerCase();
-              return Character.toUpperCase(lowerCaseStr.charAt(0)) +
-                      lowerCaseStr.substring(1);})
-            .collect(Collectors.toList()).toString();
+      String newString = mapStream
+              .map(s -> Optional.ofNullable(s)
+                      .map(String::toLowerCase)
+                      .map(lowerCaseStr -> Character.toUpperCase(lowerCaseStr.charAt(0)) +
+                              lowerCaseStr.substring(1))
+                      .orElse("UNKNOWN"))
+              .collect(Collectors.toList()).toString();
     System.out.println("newString = " + newString);
 
     mapStream = Arrays.stream(myArray);
