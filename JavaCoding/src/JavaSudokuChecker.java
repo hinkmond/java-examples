@@ -50,21 +50,36 @@ public class JavaSudokuChecker {
         }
 
         // Check each subgroup
-        for (int subgroup=0; subgroup<9; subgroup++) {
-            boolean[] seenSubgroupNum = new boolean[9];
-            for (int i=(subgroup/3 * 3); i<((subgroup/3 * 3) + 3); i++) {
-                for (int j=((subgroup % 3) * 3); j<(((subgroup % 3) * 3) + 3); j++) {
-                    seenSubgroupNum[sudoku[i][j]-1] = true;
-                    System.out.print("i, j = " + i + ", " + j + "  ");
+        for (int iOffset=0; iOffset<3; iOffset++) {
+            for (int jOffset=0; jOffset<3; jOffset++) {
+                boolean[] seenSubgroupNum = new boolean[9];
+                for (int i=0; i<3; i++) {
+                    for (int j=0; j<3; j++) {
+                        seenSubgroupNum[sudoku[i + (iOffset * 3)][j + (jOffset * 3)] - 1] = true;
+                    }
                 }
-                System.out.println();
-            }
-            for (int z=0; z<9; z++) {
-                if (!seenSubgroupNum[z]) {
-                    return false;
+                for (int z=0; z<9; z++) {
+                    if (!seenSubgroupNum[z]) {
+                        return false;
+                    }
                 }
             }
         }
+//        for (int subgroup=0; subgroup<9; subgroup++) {
+//            boolean[] seenSubgroupNum = new boolean[9];
+//            for (int i=(subgroup/3 * 3); i<((subgroup/3 * 3) + 3); i++) {
+//                for (int j=((subgroup % 3) * 3); j<(((subgroup % 3) * 3) + 3); j++) {
+//                    seenSubgroupNum[sudoku[i][j]-1] = true;
+//                    System.out.print("i, j = " + i + ", " + j + "  ");
+//                }
+//                System.out.println();
+//            }
+//            for (int z=0; z<9; z++) {
+//                if (!seenSubgroupNum[z]) {
+//                    return false;
+//                }
+//            }
+//        }
         return true;
     }
 
