@@ -56,8 +56,11 @@ public class JavaSudokuChecker {
                 for (int i=0; i<3; i++) {
                     for (int j=0; j<3; j++) {
                         seenSubgroupNum[sudoku[i + (iOffset * 3)][j + (jOffset * 3)] - 1] = true;
+                        System.out.print(" (" + (i + (iOffset * 3)) + ", " + (j + (jOffset * 3)) + ")  ");
                     }
+                    System.out.print(" ");
                 }
+                System.out.println();
                 for (int z=0; z<9; z++) {
                     if (!seenSubgroupNum[z]) {
                         return false;
