@@ -1,7 +1,7 @@
 public class JavaLongestCommonSequence {
 
     // Returns length of LCS for X[0..m-1], Y[0..n-1]
-    private static void lcs(String X, String Y, int m, int n)
+    private static int lcs(String X, String Y, int m, int n)
     {
         int[][] L = new int[m+1][n+1];
 
@@ -75,6 +75,8 @@ public class JavaLongestCommonSequence {
         System.out.print("LCS of \n"+X+"\n  and \n"+Y+"\n  is \n");
         for(int k=0;k<=temp;k++)
             System.out.print(lcs[k]);
+
+        return L[m][n];
     }
 
     // driver program
@@ -82,12 +84,12 @@ public class JavaLongestCommonSequence {
     {
 // 		String X = "AGGTAB";
 // 		String Y = "GXTXAYB";
-        String X = "AGGTABCDEFG";
-        String Y = "GXTXAYBCDE";
-// 	    String X = "AGGTABCDEFQGGHIJKGG";
-// 		String Y = "GXTXAYBXXCDEWFXGHIJK";
+//        String X = "AGGTABCDEFG";
+//        String Y = "GXTXAYBCDE";
+ 	    String X = "AGGTABCDEFQGGHIJKGGMABNCO";
+ 		String Y = "GXTXAYBXXCDEWFXGHIJKMXNXO";
         int m = X.length();
         int n = Y.length();
-        lcs(X, Y, m, n);
+        System.out.println("\nLCS = " + lcs(X, Y, m, n));
     }
 }
