@@ -82,12 +82,12 @@ public class JavaLongestCommonSequence {
     // driver program
     public static void main (String[] args)
     {
-// 		String X = "AGGTAB";
-// 		String Y = "GXTXAYB";
+ 		String X = "AGGTAB";
+ 		String Y = "GXTXAYB";
 //        String X = "AGGTABCDEFG";
 //        String Y = "GXTXAYBCDE";
- 	    String X = "AGGTABCDEFQGGHIJKGGMABNCO";
- 		String Y = "GXTXAYBXXCDEWFXGHIJKMXNXO";
+// 	    String X = "AGGTABCDEFQGGHIJKGGMABNCO";
+// 		String Y = "GXTXAYBXXCDEWFXGHIJKMXNXO";
         int m = X.length();
         int n = Y.length();
         System.out.println("\nLCS = " + lcs(X, Y, m, n));
