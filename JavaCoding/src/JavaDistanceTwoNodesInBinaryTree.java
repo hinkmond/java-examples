@@ -27,7 +27,6 @@ public class JavaDistanceTwoNodesInBinaryTree {
         Node leftCheck = findLCA(root.left, n1, n2);
         Node rightCheck = findLCA(root.right, n1, n2);
 
-
         // Check if found both n1 and n2 exists in leftCheck and rightCheck return values,
         //   then root has the LCA
         if ((leftCheck != null) && (rightCheck != null)) {
