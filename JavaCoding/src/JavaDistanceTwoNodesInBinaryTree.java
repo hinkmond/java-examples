@@ -19,17 +19,17 @@ public class JavaDistanceTwoNodesInBinaryTree {
             return null;
         }
 
-        // Check if reach either n1 or n2, then return the root which is the LCA
+        // Check if reach either n1 or n2, then return the root which is one of the branches of the LCA
         if ((root.value == n1) || (root.value == n2)) {
             return root;
         }
 
-        Node leftCheck = findLCA(root.left, n1, n2);
-        Node rightCheck = findLCA(root.right, n1, n2);
+        Node leftBranchCheck = findLCA(root.left, n1, n2);
+        Node rightBranchCheck = findLCA(root.right, n1, n2);
 
         // Check if found both n1 and n2 exists in leftCheck and rightCheck return values,
         //   then root has the LCA
-        if ((leftCheck != null) && (rightCheck != null)) {
+        if ((leftBranchCheck != null) && (rightBranchCheck != null)) {
             if (DEBUG) {
                 System.out.println("Found LCA = " + root.value);
             }
@@ -37,7 +37,7 @@ public class JavaDistanceTwoNodesInBinaryTree {
         }
 
         // Recurse down left tree if LCA of both nodes still in left tree, else LCA of both is still down right tree
-        if (leftCheck != null) {
+        if (leftBranchCheck != null) {
             return findLCA(root.left, n1, n2);
         } else {
             return findLCA(root.right, n1, n2);
