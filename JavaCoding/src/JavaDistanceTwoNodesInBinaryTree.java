@@ -84,7 +84,7 @@ public class JavaDistanceTwoNodesInBinaryTree {
     public static void main(String[] args) {
 
         // Let us create binary tree given in
-        // the above example
+        // the test case #01 example: See: JavaDistanceTwoNodesInBinaryTreeTestcase01.png
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
